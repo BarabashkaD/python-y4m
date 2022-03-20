@@ -29,6 +29,8 @@ class Reader(object):
                 self._print(frame, 'decoded')
                 self._callback(frame)
                 frame = self._decode_frame()
+            return frame
+        return None
 
     def _frame_size(self):
         assert self._stream_headers['C'].startswith('420'), 'only support I420 fourcc'

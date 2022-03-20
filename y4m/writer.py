@@ -27,7 +27,7 @@ class Writer(object):
             data = self._encode_headers(self._stream_headers.copy())
             self._fd.write(b'YUV4MPEG2 ' + data + b' Xpython-y4m\n')
             self._print('generating stream with headers:', self._stream_headers)
-        else:
+        if len(frame.buffer) >= self._frame_size():
             self._encode_frame(frame)
 
     def _frame_size(self):
